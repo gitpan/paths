@@ -1,0 +1,30 @@
+#!/usr/local/bin/perl -w
+
+use strict;
+use Env::paths;
+
+$Env::path::utok=1;
+
+my $osguess='powerpc-ibm-aix4.2.1.0';
+my $prefix='/usr/local/opt';
+my @std_opts = ('dejagnu', 'egcs');
+my %paths;
+
+for (@std_opts) {
+  $paths{$_} = new Env::paths("$prefix/$_");
+  $paths{$_}->add('PATH', 'bin', '$PATH')
+            ->add('MANPATH', 'man', '$MANPATH')
+            ->add('LIBPATH', 'lib', '$LIBPATH');
+}
+$paths{'egcs'}->add('INFOPATH', 'info', '$INFOPATH');
+
+$paths{'gimp'} = new Env::paths("$prefix/gimp");
+$paths{'gimp'}->add('PATH', "$osguess/bin", '$PATH')->
+                add('MANPATH', 'share/man', '$MANPATH')->
+	        add('LIBPATH', '$osguess/lib', '$LIBPATH');
+
+for (keys %paths) {
+#  print $paths{$_}->csh();
+#  print $paths{$_}->sh();
+  $paths{$_}->save(); 
+}

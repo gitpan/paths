@@ -1,0 +1,10 @@
+#!/usr/local/bin/perl -w
+
+use strict;
+use Env::paths;
+
+my $local = new Env::paths("$ENV{HOME}/local");
+
+$local->add('PATH', 'bin', '$PATH');
+$local->static('PAGER', '/usr/local/bin/less');
+$local->save();

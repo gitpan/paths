@@ -1,0 +1,19 @@
+
+This is a simple program that allows you to wite a perl program
+that will create a *.csh and *.sh files that set environmental
+variables.  This way users can use both csh and sh compatable
+shells on the same system and the admin only need maintain one
+file.
+
+This is like, version 0, I don't even check my opens yet.
+
+Files:
+	path.pm			used by paths.pm
+	paths.pm		user interface (no docs yet)
+	fixpath			simple example
+	gen_opt_paths		more complicated example currently in
+					pratical use.
+
+
+		Sven Heinicke <sven@zen.org>
+
